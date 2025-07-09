@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Prediction Report{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: url("{% static 'images/bg.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .report-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 80px auto;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+  }
+
+  .report-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .report-container .info {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+
+  .remedies {
+    background-color: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-left: 4px solid #2ecc71;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  .remedies ul {
+    padding-left: 20px;
+  }
+
+  .disclaimer {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #e74c3c;
+    border-radius: 8px;
+    font-style: italic;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .signature {
+    text-align: right;
+    margin-top: 40px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 16px;
+    color: #eee;
+  }
+
+  .download-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .download-btn:hover {
+    background: #2980b9;
+  }
+
+  /* Hide navbar and buttons when printing */
+  @media print {
+    nav, .download-btn {
+      display: none !important;
+    }
+    body {
+      background: none !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .report-container {
+      padding: 20px;
+      margin: 40px 10px;
+    }
+
+    .report-container .info {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="report-container">
+  <h2>Prediction Report</h2>
+
+  <p class="info"><strong>Name:</strong> {{ request.user.first_name }} {{ request.user.last_name }}</p>
+  <p class="info"><strong>Gender:</strong> {{ userprofile.gender }}</p>
+  <p class="info"><strong>Predicted Result:</strong> {{ prediction.result }}</p>
+
+  <div class="remedies">
+    <h4>Suggested Remedies:</h4>
+    <ul>
+      <li>Stay hydrated and maintain a healthy diet.</li>
+      <li>Follow proper medication if prescribed.</li>
+      <li>Exercise moderately and get adequate rest.</li>
+      <li>Monitor symptoms and track changes.</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    Consult a doctor for more accurate diagnosis and personalized treatment.
+  </div>
+
+  <div class="signature">
+    <p>— Rangan Satpathi</p>
+  </div>
+
+  <button class="download-btn" onclick="window.print()">Download Report as PDF</button>
+</div>
+{% endblock %}

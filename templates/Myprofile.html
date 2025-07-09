@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<style>
+  .profile-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    color: rgb(100, 163, 215);
+    border-radius: 10px;
+  }
+
+  .predictions img {
+    height: 150px;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+</style>
+
+<div class="profile-box">
+
+  <h2>Hello, {{ request.user.username }}</h2>
+  <p>Email: {{ request.user.email }}</p>
+  <p>Age: {{ request.user.age }}</p>
+  <p>Gender: {{ request.user.gender }}</p>
+
+  <hr>
+  <h3>Prediction History</h3>
+  <div class="predictions">
+    {% for pred in predictions %}
+      <div>
+        <img src="{{ pred.image.url }}" alt="Prediction">
+        <p>Result: {{ pred.result }}</p>
+        <p>Date: {{ pred.timestamp|date:"Y-m-d H:i" }}</p>
+        
+
+      </div>
+    {% empty %}
+      <p>No predictions found.</p>
+    {% endfor %}
+  </div>
+  <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+</div>
+{% endblock %}

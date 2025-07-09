@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+  .predict-btn-link {
+    text-decoration: none;
+  }
+
+  .predict-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .predict-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+
+  .predict-btn:active {
+    transform: scale(0.97);
+  }
+</style>
+  <h1>Welcome to the Home Page</h1>
+  <p>This is content from home.html.</p>
+  <a href="{% url 'predict' %}" class="predict-btn-link">
+    <button type="button" class="predict-btn">Predict</button>
+  </a>
+  
+  
+
+
+{% endblock %}

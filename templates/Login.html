@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: url("{% static 'images/bg.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .login-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+    margin: 100px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+  }
+
+  .login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .login-container input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .login-container input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="login-container">
+  <h2 style="text-align: center;">Login</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+  </form>
+  <p style="text-align: center; margin-top: 20px;">
+    Not registered? <a href="{% url 'Signup' %}" style="color: rgb(210, 210, 255);">Register here</a>
+  </p>
+  
+  <div style="text-align: center; margin-top: 20px;">
+    <p>Or login with:</p>
+    <a href="#"><img src="{% static 'images/google.jpeg' %}" alt="Google" style="height: 30px; margin: 20px 10px;"></a>
+    <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook" style="height: 30px; margin: 20px 10px;"></a>
+  </div>
+</div>
+{% endblock %}

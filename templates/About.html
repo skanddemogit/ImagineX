@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<style>
+  .about-container {
+    max-width: 900px;
+    margin: 60px auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 12px;
+    color: #f1f1f1;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .about-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+  }
+
+  .about-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+  }
+
+  @media (max-width: 768px) {
+    .about-container {
+      margin: 30px 15px;
+      padding: 20px;
+    }
+
+    .about-container h2 {
+      font-size: 1.5rem;
+    }
+
+    .about-container p {
+      font-size: 1rem;
+    }
+  }
+
+  body {
+    background: url("{% static 'images/bg.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+  }
+</style>
+
+<div class="about-container">
+  <h2>About Mediclue</h2>
+  <p>
+    Welcome to <strong>Mediclue</strong> – your one-stop solution for medical record management and health insights. 
+    We are a dedicated team passionate about using technology to streamline healthcare.
+  </p>
+  <p>
+    Our mission is to make medical data secure, accessible, and meaningful. 
+    Whether you are a patient, doctor, or health enthusiast, Mediclue helps you take control of your health journey.
+  </p>
+  <p>
+    We believe in privacy, simplicity, and innovation. 
+    Join us as we build a healthier future through smart, transparent, and user-friendly digital healthcare.
+  </p>
+  <br/>
+        <br/>
+        
+        
+        
+
+</div>
+{% endblock %}
